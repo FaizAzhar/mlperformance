@@ -89,20 +89,6 @@ st.write(
 fig3 = px.box(df_full,y='rating', x='vendor')
 st.plotly_chart(fig3)
 
-st.write(
-    f"""
-    From the histogram above, we can observe that between the tyre and the tuning/remap
-    category, the range price of the later category is wider than the tyre category. However, although
-    some price of the products in the tuning/remap category can exceed the tyre category, the price
-    for the tuning/remap is concentrated on a cheaper price compared to the tyre category.
-    This might suggest that the average price for tuning/remap products are are lower than the tyre products.
-    """
-)
-
-# # rating of vendor - boxplot
-fig3 = px.box(df_full,y='rating', x='vendor')
-st.plotly_chart(fig3)
-
 # # feedback from customer - spider chart/polar chart
 grouped_df = df_full[['category','recommended_purchase','performance_vehicle_improve','delivery_time',
  'great_service_product_item','good_quality','excellent_customer_service',
@@ -110,7 +96,6 @@ grouped_df = df_full[['category','recommended_purchase','performance_vehicle_imp
 grouped_df = grouped_df.groupby('category',as_index=False)['recommended_purchase','performance_vehicle_improve','delivery_time',
  'great_service_product_item','good_quality','excellent_customer_service',
  'fast_delivery'].mean()
-print(grouped_df.iloc[0,1:])
 
 topics = ['Recommended','Improve performance', 'Great Service/Product/Item',
           'Good Quality','Excellent Customer Service','Fast Delivery']
