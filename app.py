@@ -5,6 +5,7 @@ import plotly.express as px
 import os.path
 import os
 import plotly.graph_objects as go
+import numpy as np
 
 CUR_DIR = os.path.dirname(os.path.abspath(__file__))
 data_path = os.path.join(CUR_DIR)
@@ -36,7 +37,11 @@ st.sidebar.write(
     # ML Performance app
     This is the app that visualize the products sold at the [ML Performance](https://www.mlperformance.co.uk) website.\n
     The analysis were performed using {df_full.shape[0]} products from 
-    five categories ([engine oils](https://www.mlperformance.co.uk/collections/engine-oil-recommender), [batteries](https://www.mlperformance.co.uk/collections/car-batteries), [tyres](https://www.mlperformance.co.uk/collections/tyre-recommender), [wiper blades](https://www.mlperformance.co.uk/collections/wiper-blades), [tuning and remap](https://www.mlperformance.co.uk/collections/tuning-remap)).
+    five categories ([engine oils](https://www.mlperformance.co.uk/collections/engine-oil-recommender), 
+    [batteries](https://www.mlperformance.co.uk/collections/car-batteries), 
+    [tyres](https://www.mlperformance.co.uk/collections/tyre-recommender), 
+    [wiper blades](https://www.mlperformance.co.uk/collections/wiper-blades), 
+    [tuning and remap](https://www.mlperformance.co.uk/collections/tuning-remap)).
 
     """
 )
@@ -93,9 +98,9 @@ st.plotly_chart(fig3)
 grouped_df = df_full[['category','recommended_purchase','performance_vehicle_improve','delivery_time',
  'great_service_product_item','good_quality','excellent_customer_service',
  'fast_delivery']].replace('No Type', 0)
-grouped_df = grouped_df.groupby('category',as_index=False)['recommended_purchase','performance_vehicle_improve','delivery_time',
+grouped_df = grouped_df.groupby('category',as_index=False)[['recommended_purchase','performance_vehicle_improve','delivery_time',
  'great_service_product_item','good_quality','excellent_customer_service',
- 'fast_delivery'].mean()
+ 'fast_delivery']].mean()
 
 topics = ['Recommended','Improve performance', 'Great Service/Product/Item',
           'Good Quality','Excellent Customer Service','Fast Delivery']
