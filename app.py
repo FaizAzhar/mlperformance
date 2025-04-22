@@ -105,7 +105,7 @@ def checkbox_container():
         if idx == 0:
             cols[idx].checkbox('All', value=False, key=f'checkboxAll', on_change=check_All)
             continue
-        if idx == 3 | idx == 5:
+        if idx == 3 or idx == 5:
             cols[idx].checkbox(labs[idx-1], value=True, key=f'checkbox_{val[idx-1]}')
             continue
         cols[idx].checkbox(labs[idx-1], value=False, key=f'checkbox_{val[idx-1]}')
